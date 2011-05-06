@@ -214,7 +214,7 @@ div.entry-meta {
 .entry-meta ul li {
 	border-bottom: 1px #A3A3A3 dotted;
 	padding-bottom: 20px;
-	padding-right: 3px;
+	padding-right: 5px;
 }
 .sep{
 	font-style: italic;
