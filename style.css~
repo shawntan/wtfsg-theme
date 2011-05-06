@@ -200,7 +200,7 @@ h1 {
 
 article {
 	line-height: 1.2em;
-	min-height: 300px;
+	min-height: 200px;
 }
 
 div.entry-meta {
