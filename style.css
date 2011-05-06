@@ -67,11 +67,16 @@ h1 {
 	width: 100%;
 }
 #content {
+	-moz-box-shadow: 3px 3px 3px #888;
+	-webkit-box-shadow: 3px 3px 3px #888;
+	box-shadow: 3px 3px 3px #888;
+	border-radius: 5px;
 	width: 645px;
 	margin-left:auto;
 	margin-right:auto;
 	padding: 25px;
 	background: #FFF;
+
 }
 #main .widget-area {
 	float: right;
