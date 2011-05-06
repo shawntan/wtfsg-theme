@@ -37,8 +37,6 @@
 				</li>
 				<li>
 					<span class="cat-links">
-					<span class="entry-utility-prep entry-utility-prep-cat-links">
-					<?php _e( 'Posted in ', 'toolbox' ); ?></span>
 					<?php the_category( ', ' ); ?>
 					</span>
 				</li>
