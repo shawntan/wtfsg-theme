@@ -12,15 +12,30 @@
 		<?php if ( 'post' == $post->post_type ) : ?>
 		<div class="entry-meta">
 			<?php
-				printf( __( '<span class="sep">Posted on </span><a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s" pubdate>%3$s</time></a> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s">%6$s</a></span>', 'toolbox' ),
+				/*printf( __( '<span class="sep">Posted on </span><a href="%1$s" rel="bookmark"><time class="entry-date" datetime="%2$s" pubdate>%3$s</time></a> <span class="sep"> by </span> <span class="author vcard"><a class="url fn n" href="%4$s" title="%5$s">%6$s</a></span>', 'toolbox' ),
 					get_permalink(),
 					get_the_date( 'c' ),
 					get_the_date(),
 					get_author_posts_url( get_the_author_meta( 'ID' ) ),
 					sprintf( esc_attr__( 'View all posts by %s', 'toolbox' ), get_the_author() ),
 					get_the_author()
-				);
+				);*/
 			?>
+			<span class="sep">Posted on </span>
+			<a href="<?php echo get_permalink()?>" rel="bookmark">
+				<time class="entry-date" datetime="<?php the_date('c') ?>">
+					<?php the_date('c') ?> SHIT
+				</time>
+			</a><span class="sep"> by </span>
+			<span class="author vcard">
+				<a
+					class="url fn n"
+					href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) )?>"
+					title="<?php printf( esc_attr__( 'View all posts by %s', 'toolbox' ), get_the_author() )?>"
+				>
+					<?php the_author() ?>
+				</a>
+			</span>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
