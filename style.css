@@ -44,6 +44,12 @@ font-weight:700;
 	font-style:bold;
 }
 
+@font-face{
+	font-family: "Geo";
+	src:url(Geo-Regular.ttf);
+	font-style:bold;
+}
+
 a {
 	text-decoration:none;
 	color: #484848;
@@ -61,10 +67,7 @@ body {
 	font-family: "ff-milo-web-1","ff-milo-web-2",sans-serif;
 	background: #F3F3F3;
 }
-h1 {
-	font-family: Ubuntu, serif;
-	font-style: bold;
-}
+
 
 
 /* =Structure
@@ -136,6 +139,28 @@ h1 {
 
 /* =Header
 -------------------------------------------------------------- */
+hgroup {
+	width: 645px;
+	height: 150px;
+	margin-left:auto;
+	margin-right:auto;
+	display:block;
+	position: relative;
+}
+#title {
+	z-index: 1;
+	position: relative;
+	margin-left: 40px;
+	width: 30px;
+	font-family: "Geo", serif;
+	font-size: 30px;
+	letter-spacing: 4px;
+}
+#conway {
+	position: absolute;
+	opacity: 0.5;
+	z-index: 0;
+}
 
 #site-title {
 	font-size: 2em;
@@ -217,6 +242,8 @@ article {
 }
 h1.entry-title {
 	margin-bottom: 50px;
+	font-family: Ubuntu, serif;
+	font-style: bold;
 }
 div.entry-meta {
 	display: block;

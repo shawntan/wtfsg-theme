@@ -23,7 +23,7 @@ get_header(); ?>
 					
 					<?php get_template_part( 'content', get_post_format() ); ?>
 
-				<?php endwhile; ?>
+				<?php endwhile;?>
 				
 				<?php /* Display navigation to next/previous pages when applicable */ ?>
 				<?php if (  $wp_query->max_num_pages > 1 ) : ?>
