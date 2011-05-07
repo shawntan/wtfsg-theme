@@ -44,7 +44,19 @@ font-weight:700;
 	font-style:bold;
 }
 
-a {text-decoration:none;}
+a {
+	text-decoration:none;
+	color: #484848;
+}
+
+a:hover {
+	color: #F3804F;
+   -webkit-transition:color 0.2s ease-in;
+   -moz-transition:color 0.2s ease-in;
+   -o-transition:color 0.2s ease-in;
+   transition:color 0.2s ease-in;
+}
+
 body {
 	font-family: "ff-milo-web-1","ff-milo-web-2",sans-serif;
 	background: #F3F3F3;
@@ -53,6 +65,7 @@ h1 {
 	font-family: Ubuntu, serif;
 	font-style: bold;
 }
+
 
 /* =Structure
 -------------------------------------------------------------- */
@@ -202,7 +215,9 @@ article {
 	line-height: 1.2em;
 	min-height: 300px;
 }
-
+h1.entry-title {
+	margin-bottom: 50px;
+}
 div.entry-meta {
 	display: block;
 	float: left;
@@ -212,7 +227,16 @@ div.entry-meta {
 	font-family: Georgia,'Times New Roman';
 	color: #A3A3A3;
 }
-div.entry-meta a {color: #838383;}
+div.entry-meta a {
+	color: #838383;
+}
+div.entry-meta a:hover {
+	color: #D18D71;
+   -webkit-transition:color 0.4s ease-in;
+   -moz-transition:color 0.4s ease-in;
+   -o-transition:color 0.4s ease-in;
+   transition:color 0.4s ease-in;
+}
 .entry-meta ul {
 	margin-top: -10px;
 	list-style: none;
@@ -234,7 +258,7 @@ div.entry-meta a {color: #838383;}
 	width:150px;
 	height: 200px;
 	margin: 5px;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	line-height: 1em;
 }
 .entry-meta time .day {

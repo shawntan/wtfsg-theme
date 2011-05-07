@@ -12,13 +12,15 @@
 		<div class="entry-meta">
 			<ul>
 				<li>
-				<a href="<?php echo get_permalink()?>" rel="bookmark">
+<?php $y = get_the_time('Y'); ?>
+<?php $m = get_the_time('m'); ?>
+<?php $d = get_the_time('d'); ?>				
 					<time class="entry-date" datetime="<?php the_date('c') ?>">
-						<span class="day"><?php the_time('j')?></span>
-						<div>
-							<span class="month"><?php the_time('F \'y')?></span>
-							<span class="time"><?php the_time('H:i')?></span>
-						</div>
+					<a href="<?php echo get_day_link($y, $m, $d);?>" rel="bookmark">
+						<span class="day"><?php echo $d ?></span>
+						<span class="month"><?php the_time('F \'y')?></span>
+					</a>
+						<span class="time"><?php the_time('H:i')?></span>
 					</time>
 				</a>
 				</li>
