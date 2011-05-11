@@ -39,10 +39,23 @@
 <?php wp_head(); ?>
 
 	<script type="text/javascript">
-		var CELL_WIDTH=10;
+		var CELL_WIDTH=5;
 		var CELL_COLOR='#F3804F';
 	</script>
 	<script type="text/javascript" src="<?php bloginfo( 'template_directory' ); ?>/conway.js"></script>
+	<script type="text/javascript">
+		var isCtrl = false;
+		document.onkeyup=function(e) {
+			if(e.which == 17) isCtrl=false;
+		}
+		document.onkeydown=function(e) {
+			if(e.which == 17) isCtrl=true;
+			if(e.which == 83 && isCtrl == true) {
+				toggle();
+				return false;
+			}
+		}
+	</script>
 </head>
 
 <body <?php body_class(); ?>>

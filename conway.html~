@@ -4,17 +4,9 @@
 		<title>Canvas tutorial</title>
 		<script type="text/javascript">
 			var CELL_WIDTH = 5;
-			var CELL_COLOR = 'rgb(0,200,0)';
-			var preload = function() {
-				board[67][19].clicked();
-				board[66][20].clicked();
-				board[66][21].clicked();
-				board[67][21].clicked();
-				board[68][21].clicked();
-			};
-		</script>	
+			var CELL_COLOR = 'rgb(0,200,0)'
+		</script>
 		<script type="text/javascript" src="conway.js"></script>
-		
 		<style type="text/css">
 			canvas { border: 1px solid black; }
 		</style>
