@@ -85,9 +85,11 @@ function initiateMap() {
 	}
 	printArray = function() {
 		var saved = "";
-		for(var i=0;i<occNew.count;i++) {
-			if(occNew[i].val[F]==1)
-				saved += "board["+occNew[i].x+"]["+occNew[i].y+"].clicked();\n";
+		for(var i=0;i<horizontalCells;i++) {
+			for(var j=0;j<verticalCells;j++) {
+				if(board[i][j].val[F]==1)
+					saved += "board["+board[i][j].x+"]["+board[i][j].y+"].clicked();\n";
+			}
 		}
 		console.log(saved);
 	};
@@ -135,7 +137,7 @@ var init = function(){
 			board[x][y].clicked();
 		};
 	}
-	if(preload) preload();
+	if(preload) preload(board);
 }
 var _onload = window.onload;
 window.onload = function() {
