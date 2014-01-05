@@ -1,126 +1,136 @@
-<?php
-/**
- * @package WordPress
- * @subpackage Toolbox
- */
-?><!DOCTYPE html>
-<html <?php language_attributes(); ?>>
-<head>
-<meta charset="<?php bloginfo( 'charset' ); ?>" />
-<title><?php
-	/*
-	 * Print the <title> tag based on what is being viewed.
-	 */
-	global $page, $paged;
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html <?php language_attributes(); ?> class="no-js ie ie6 lte7 lte8 lte9"><![endif]-->
+<!--[if IE 7 ]><html <?php language_attributes(); ?> class="no-js ie ie7 lte7 lte8 lte9"><![endif]-->
+<!--[if IE 8 ]><html <?php language_attributes(); ?> class="no-js ie ie8 lte8 lte9"><![endif]-->
+<!--[if IE 9 ]><html <?php language_attributes(); ?> class="no-js ie ie9 lte9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html <?php language_attributes(); ?> class="no-js"><!--<![endif]-->
+	<head>
+		<meta charset="<?php bloginfo( 'charset' ); ?>" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, minimum-scale=0.5">
+		<title><?php wp_title( 'by', true, 'right' ); bloginfo( 'name' ); ?></title>
+		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
+		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+		<link rel="shortcut icon" href="<?php echo get_bloginfo('template_directory'); ?>/images/favicon.ico" />
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<?php
 
-	wp_title( '|', true, 'right' );
+			wp_enqueue_script('jquery');
 
-	// Add the blog name.
-	bloginfo( 'name' );
+			if ( is_singular() && get_option( 'thread_comments' ) )
+				wp_enqueue_script( 'comment-reply' );
 
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo( 'description', 'display' );
-	if ( $site_description && ( is_home() || is_front_page() ) )
-		echo " | $site_description";
+			$options = get_option ( 'svbtle_options' ); 
 
-	// Add a page number if necessary:
-	if ( $paged >= 2 || $page >= 2 )
-		echo ' | ' . sprintf( __( 'Page %s', 'toolbox' ), max( $paged, $page ) );
+			echo $options['google_analytics'];
+ 
+			if( isset( $options['color'] ) && '' != $options['color'] )
+				$color = $options['color'];
+			else 
+				$color = "#ff0000";
+	
+		?>
 
-	?></title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-<!--[if lt IE 9]>
-<script src="<?php bloginfo( 'template_directory' ); ?>/html5.js" type="text/javascript"></script>
-<![endif]-->
+		<style>blockquote {border-color: <?php echo $color ?>;}figure.logo, aside.alsoby li a:hover, aside.kudo.complete span.circle {background-color: <?php echo $color ?>;}section.preview header#begin h2,ul#user_meta a:hover,nav.pagination span.next a,nav.pagination span.prev a {color: <?php echo $color ?>;}ul#user_meta a:hover,nav.pagination span.next a,nav.pagination span.prev a {border-color: <?php echo $color ?>;}::-moz-selection { background: <?php echo $color ?>; color: #fff; text-shadow: none;}::selection { background: <?php echo $color ?>; color: #fff; text-shadow: none;}
+		</style>
+		
+		<?php wp_head();  ?>
+	</head>
+	<body <?php body_class(); ?>>
 
-<?php wp_head(); ?>
-
-	<script type="text/javascript">
-		var CELL_WIDTH=5;
-		var CELL_COLOR='#F3804F';
-		var preload = function(board) {
-			board[92][29].clicked();
-			board[92][30].clicked();
-			board[93][29].clicked();
-			board[93][30].clicked();
-			board[100][12].clicked();
-			board[100][13].clicked();
-			board[101][12].clicked();
-			board[101][14].clicked();
-			board[102][14].clicked();
-			board[102][29].clicked();
-			board[102][30].clicked();
-			board[102][31].clicked();
-			board[103][14].clicked();
-			board[103][15].clicked();
-			board[103][28].clicked();
-			board[103][32].clicked();
-			board[104][27].clicked();
-			board[104][33].clicked();
-			board[105][27].clicked();
-			board[105][33].clicked();
-			board[106][30].clicked();
-			board[107][28].clicked();
-			board[107][32].clicked();
-			board[108][29].clicked();
-			board[108][30].clicked();
-			board[108][31].clicked();
-			board[109][30].clicked();
-			board[112][27].clicked();
-			board[112][28].clicked();
-			board[112][29].clicked();
-			board[113][27].clicked();
-			board[113][28].clicked();
-			board[113][29].clicked();
-			board[114][26].clicked();
-			board[114][30].clicked();
-			board[116][25].clicked();
-			board[116][26].clicked();
-			board[116][30].clicked();
-			board[116][31].clicked();
-			board[126][27].clicked();
-			board[126][28].clicked();
-			board[127][27].clicked();
-			board[127][28].clicked();
-		};
-	</script>
-	<script type="text/javascript" src="<?php bloginfo( 'template_directory' ); ?>/conway.js"></script>
-	<script type="text/javascript">
-		var isCtrl = false;
-		document.onkeyup=function(e) {
-			if(e.which == 17) isCtrl=false;
-		}
-		document.onkeydown=function(e) {
-			if(e.which == 17) isCtrl=true;
-			if(e.which == 83 && isCtrl == true) {
-				toggle();
-				return false;
+		<header id="sidebar">
+			<figure class="medium">
+				<!--<a href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></a> -->
+				<canvas id="conway" width="192" height="192"></canvas>
+			<script type="text/javascript">
+			var CELL_WIDTH = 12;
+			var CELL_COLOR = 'rgb(0,128,0)';
+			function turtle(board,x,y) {
+				board[x + 0][y + 4].clicked();
+				board[x + 0][y + 5].clicked();
+				board[x + 1][y + 0].clicked();
+				board[x + 1][y + 1].clicked();
+				board[x + 1][y + 3].clicked();
+				board[x + 1][y + 6].clicked();
+				board[x + 1][y + 8].clicked();
+				board[x + 1][y + 9].clicked();
+				board[x + 2][y + 0].clicked();
+				board[x + 2][y + 1].clicked();
+				board[x + 2][y + 8].clicked();
+				board[x + 2][y + 9].clicked();
+				board[x + 3][y + 0].clicked();
+				board[x + 3][y + 2].clicked();
+				board[x + 3][y + 7].clicked();
+				board[x + 3][y + 9].clicked();
+				board[x + 4][y + 2].clicked();
+				board[x + 4][y + 3].clicked();
+				board[x + 4][y + 6].clicked();
+				board[x + 4][y + 7].clicked();
+				board[x + 5][y + 1].clicked();
+				board[x + 5][y + 2].clicked();
+				board[x + 5][y + 4].clicked();
+				board[x + 5][y + 5].clicked();
+				board[x + 5][y + 7].clicked();
+				board[x + 5][y + 8].clicked();
+				board[x + 6][y + 3].clicked();
+				board[x + 6][y + 6].clicked();
+				board[x + 7][y + 1].clicked();
+				board[x + 7][y + 8].clicked();
+				board[x + 8][y + 1].clicked();
+				board[x + 8][y + 8].clicked();
+				board[x + 10][y + 1].clicked();
+				board[x + 10][y + 2].clicked();
+				board[x + 10][y + 3].clicked();
+				board[x + 10][y + 4].clicked();
+				board[x + 10][y + 5].clicked();
+				board[x + 10][y + 6].clicked();
+				board[x + 10][y + 7].clicked();
+				board[x + 10][y + 8].clicked();
+				board[x + 11][y + 0].clicked();
+				board[x + 11][y + 1].clicked();
+				board[x + 11][y + 8].clicked();
+				board[x + 11][y + 9].clicked();
 			}
-		}
-	</script>
-</head>
+			var preload = function(board) {
+				console.log('HELO');
+				turtle(board,2,3);
+			};
+			</script>
+				<script type="text/javascript" src="<?php echo get_bloginfo('template_directory'); ?>/js/conway.js"></script>
+				<script type="text/javascript" src="<?php echo get_bloginfo('template_directory'); ?>/js/konami.js"></script>
+<script>
+			var easter_egg = new Konami();
+			easter_egg.code = start;
+			easter_egg.load();
+		</script>
+			</figure>
+			<h1><a href="<?php echo home_url( '/' ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+			<h2><a href="<?php echo home_url( '/' ); ?>"><?php echo $options['theme_username'] ?></a></h2>
+			<h3><?php bloginfo( 'description' ); ?></h3>
 
-<body <?php body_class(); ?>>
-<div id="page" class="hfeed">
-	<header id="branding" role="banner">
-		<hgroup>
-			<canvas id="conway" width="640" height="170"></canvas>
-			<div id="title">
-			<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-			<h2 id="site-description"><?php bloginfo( 'description' ); ?></h2>
-			</div>
-		</hgroup>
+			<ul id="user_nav">
+			
+				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+				
+				<?php if ($options['rss-link']): ?>
+					<li class="link feed">
+				      <a href="<?php bloginfo('rss_url'); ?>">feed</a>
+				    </li>		
+				<?php endif ?>		
+		
+				<?php if ( is_active_sidebar( 'sidebar' ) ) dynamic_sidebar( 'sidebar' ); ?>
 
-		<nav id="access" role="navigation">
-			<h1 class="section-heading"><?php _e( 'Main menu', 'toolbox' ); ?></h1>
-			<div class="skip-link screen-reader-text"><a href="#content" title="<?php esc_attr_e( 'Skip to content', 'toolbox' ); ?>"><?php _e( 'Skip to content', 'toolbox' ); ?></a></div>
-
-			<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-		</nav><!-- #access -->
-	</header><!-- #branding -->
-
-
-	<div id="main">
+		  </ul>
+		  <aside id="svbtle_linkback">
+		    <a href="https://github.com/gravityonmars/wp-svbtle">
+		      <span class="logo_square"><span class="logo_circle">&nbsp;</span></span>&nbsp;<span class="svbtle">wp-svbtle</span>
+		    </a>
+		  </aside>
+		</header>
+		<section id="river" role="main">
+        
+        <?php if (isset($_GET['not_found'])): ?>
+        <div id="notice"><span>:(</span><br><br>Not found.</div>
+        <?php endif; ?>
