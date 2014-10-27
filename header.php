@@ -7,7 +7,7 @@
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, minimum-scale=0.5">
-		<title><?php wp_title( 'by', true, 'right' ); bloginfo( 'name' ); ?></title>
+		<title><?php wp_title( ' - ', true, 'right' ); bloginfo( 'name' ); ?></title>
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
 		<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -47,6 +47,7 @@
 		ga('create', 'UA-47148207-1', 'wtf.sg');
 		ga('send', 'pageview');
 	</script>
+	<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 	</head>
 	<body <?php body_class(); ?>>
 
